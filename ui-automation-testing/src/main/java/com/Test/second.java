@@ -11,5 +11,4 @@ public class second {
 		System.out.println("This class is part of the com.Test package.");
 		System.out.println("You can add more classes to this package as needed.");
 	}
-
 }
