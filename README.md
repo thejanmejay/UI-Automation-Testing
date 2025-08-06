@@ -1,27 +1,48 @@
-## 🧪 Selenium Automation Project
+# 🧪 Selenium Automation Project
 
-This project is designed to help beginners get started with Selenium WebDriver and basic web automation using Java or Python in IntelliJ, Eclipse, or PyCharm.
+This project is designed to help beginners get started with Selenium WebDriver and basic web automation using **Java** or **Python** in **IntelliJ**, **Eclipse**, or **PyCharm**.
 
-### ✅ Project Highlights
+---
 
-* Set up **Selenium WebDriver** with a chosen IDE (IntelliJ, Eclipse, or PyCharm)
-* Master core WebDriver commands: `click()`, `sendKeys()`, `getText()`
-* Learn to use locators: `ID`, `CSS Selector`, `XPath`
-* Automate a basic **login workflow**
-* Validate page **title** after login on a demo site
+## 📚 Table of Contents
+
+* [Project Highlights](#-project-highlights)
+* [Prerequisites](#-prerequisites)
+* [Setup Instructions](#-setup-instructions)
+
+  * [Java + IntelliJ or Eclipse](#java--intellij-or-eclipse)
+  * [Python + PyCharm](#python--pycharm)
+* [Core Features Demonstrated](#-core-features-demonstrated)
+
+  * [WebDriver Commands](#️-webdriver-commands)
+  * [Locator Strategies](#️-locator-strategies)
+* [Sample Test Flow](#-sample-test-flow)
+* [Project Structure](#-project-structure)
+* [Demo Sites](#-demo-sites)
+* [License](#-license)
+
+---
+
+## ✅ Project Highlights
+
+* Set up **Selenium WebDriver** with your preferred IDE.
+* Master core WebDriver commands: `click()`, `sendKeys()`, `getText()`.
+* Learn locator strategies: **ID**, **CSS Selector**, **XPath**.
+* Automate a basic **login workflow**.
+* Validate the **page title** after login on a demo site.
 
 ---
 
 ## 🛠 Prerequisites
 
-* Java SDK (if using Java) or Python (if using Python)
-* Installed IDE:
+* **Java SDK** (if using Java) or **Python** (if using Python)
+* IDE:
 
   * [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [Eclipse](https://www.eclipse.org/) for Java
   * [PyCharm](https://www.jetbrains.com/pycharm/) for Python
-* Selenium WebDriver
-* Web browser (Chrome/Firefox)
-* WebDriver binary (e.g., `chromedriver`, `geckodriver`)
+* **Selenium WebDriver**
+* Web browser (e.g., **Chrome**, **Firefox**)
+* WebDriver binary (e.g., `chromedriver`, `geckodriver`) in your system `PATH`
 
 ---
 
@@ -29,12 +50,13 @@ This project is designed to help beginners get started with Selenium WebDriver a
 
 ### Java + IntelliJ or Eclipse
 
-1. Create a new Maven/Gradle project.
+1. Create a new Maven or Gradle project.
 
-2. Add Selenium dependency in `pom.xml` or `build.gradle`:
+2. Add the Selenium dependency:
+
+   **Maven:**
 
    ```xml
-   <!-- For Maven -->
    <dependency>
      <groupId>org.seleniumhq.selenium</groupId>
      <artifactId>selenium-java</artifactId>
@@ -42,13 +64,18 @@ This project is designed to help beginners get started with Selenium WebDriver a
    </dependency>
    ```
 
-3. Download and configure the correct WebDriver binary in your system PATH or project.
+3. Add the WebDriver binary to your system `PATH` or configure it programmatically.
 
-4. Write your test class using core WebDriver commands.
+4. Implement test classes using WebDriver commands.
 
 ### Python + PyCharm
 
-1. Create a new virtual environment.
+1. Set up a virtual environment:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # or venv\Scripts\activate on Windows
+   ```
 
 2. Install Selenium:
 
@@ -56,7 +83,7 @@ This project is designed to help beginners get started with Selenium WebDriver a
    pip install selenium
    ```
 
-3. Download the WebDriver binary (e.g., `chromedriver.exe`) and add it to your PATH or reference it in your script.
+3. Place the WebDriver binary in your `PATH` or specify its location in your script.
 
 ---
 
@@ -64,30 +91,43 @@ This project is designed to help beginners get started with Selenium WebDriver a
 
 ### ✔️ WebDriver Commands
 
-* `driver.get("https://example.com")`
-* `driver.find_element(By.ID, "username").send_keys("your_username")`
-* `driver.find_element(By.ID, "password").send_keys("your_password")`
-* `driver.find_element(By.ID, "loginBtn").click()`
-* `driver.title` or `driver.getTitle()` for page title validation
+```python
+driver.get("https://example.com")
+driver.find_element(By.ID, "username").send_keys("your_username")
+driver.find_element(By.ID, "password").send_keys("your_password")
+driver.find_element(By.ID, "loginBtn").click()
+assert "Expected Title" in driver.title
+```
 
 ### ✔️ Locator Strategies
 
-* By **ID**
-  `driver.find_element(By.ID, "username")`
-* By **CSS Selector**
-  `driver.find_element(By.CSS_SELECTOR, "input[name='username']")`
-* By **XPath**
-  `driver.find_element(By.XPATH, "//input[@name='username']")`
+* **By ID**
+
+  ```python
+  driver.find_element(By.ID, "username")
+  ```
+
+* **By CSS Selector**
+
+  ```python
+  driver.find_element(By.CSS_SELECTOR, "input[name='username']")
+  ```
+
+* **By XPath**
+
+  ```python
+  driver.find_element(By.XPATH, "//input[@name='username']")
+  ```
 
 ---
 
 ## 🧪 Sample Test Flow
 
-1. Launch browser and navigate to demo login page.
+1. Launch the browser and navigate to the login page.
 2. Enter valid credentials.
-3. Click login button.
-4. Assert that the post-login page title is as expected.
-5. Close browser.
+3. Click the login button.
+4. Validate the title of the landing page.
+5. Close the browser.
 
 ---
 
@@ -104,7 +144,15 @@ selenium-login-test/
 
 ---
 
-## 🔗 Demo Sites (Examples)
+## 🔗 Demo Sites
 
-* [https://the-internet.herokuapp.com/login](https://the-internet.herokuapp.com/login)
-* \[[https://demo.guru99.com/test/login.html\](](https://demo.guru99.com/test/login.html]%28)[https://demo.guru99](https://demo.guru99)
+You can test your automation on the following public demo sites:
+
+* [The Internet (Herokuapp)](https://the-internet.herokuapp.com/login)
+* [Guru99 Login Demo](https://demo.guru99.com/test/login.html)
+
+---
+
+## 📄 License
+
+This project is open-source and free to use for educational purposes.
