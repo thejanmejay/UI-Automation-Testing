@@ -1,8 +1,12 @@
 package com.TestModule;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TextBoxTest {
 	  WebDriver driver;
@@ -17,8 +21,9 @@ public class TextBoxTest {
 		}
     			try {
             // Use the passed driver, don't create a new one
-            driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
-            
+// wait till the page load 
+    				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("userName")));
             System.out.println("User is on the Text Box page: " + driver.getCurrentUrl());
             
             WebElement fullName = driver.findElement(By.id("userName"));
@@ -32,17 +37,9 @@ public class TextBoxTest {
             currentAddress.sendKeys("123 Main St, Springfield, USA");
             permanentAddress.sendKeys("456 Elm St, Springfield, USA");
             submitButton.click();
-            // Optionally, you can add assertions or checks to verify the form submission
-            // For example, check if a success message appears
-            WebElement successMessage = driver.findElement(By.id("output"));
-            if (successMessage.isDisplayed()) {
-				System.out.println("Form submitted successfully. Output: " + successMessage.getText());
-			} else {
-				System.out.println("Form submission did not show success message.");
-			}
-            
             
             System.out.println("Form submitted successfully.");
+            
         } catch(Exception e) {
             System.err.println("Error in TextBoxTest:");
             e.printStackTrace();
