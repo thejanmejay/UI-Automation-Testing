@@ -32,6 +32,15 @@ public class TextBoxTest {
             currentAddress.sendKeys("123 Main St, Springfield, USA");
             permanentAddress.sendKeys("456 Elm St, Springfield, USA");
             submitButton.click();
+            // Optionally, you can add assertions or checks to verify the form submission
+            // For example, check if a success message appears
+            WebElement successMessage = driver.findElement(By.id("output"));
+            if (successMessage.isDisplayed()) {
+				System.out.println("Form submitted successfully. Output: " + successMessage.getText());
+			} else {
+				System.out.println("Form submission did not show success message.");
+			}
+            
             
             System.out.println("Form submitted successfully.");
         } catch(Exception e) {
