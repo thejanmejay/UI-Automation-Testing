@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import com.TestModule.CheckBoxActions;
+import com.TestModule.CheckBoxTestRunner;
 import com.TestModule.TextBoxTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -22,7 +25,6 @@ public class MainTest {
         driver.manage().window().maximize();
         
         try {
-            driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
             driver.get("https://demoqa.com/");
 
             System.out.println("Page Title: " + driver.getTitle());
@@ -41,6 +43,16 @@ public class MainTest {
             // Execute TextBoxTest
             TextBoxTest textBoxTest = new TextBoxTest(driver);
             textBoxTest.performTextBoxTest();
+            System.out.println("Text Box actions completed successfully.");
+            
+            // Click on Check Box
+            CheckBoxTestRunner checkBoxRunner = new CheckBoxTestRunner(driver);
+            checkBoxRunner.performCheckBoxTest();
+            
+         
+            
+            
+            
         } catch (Exception e) {
             System.err.println("Error in main test:");
             e.printStackTrace();
