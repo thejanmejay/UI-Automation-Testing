@@ -11,51 +11,46 @@ import com.TestModule.TextBoxTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class MainTest {
-    public static void main(String[] args) {
-        // Configure WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        
-        // Set Chrome options
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--start-maximized");
-        
-        // Initialize WebDriver
-        WebDriver driver = WebDriverManager.chromedriver().create();
-        driver.manage().window().maximize();
-        
-        try {
-            driver.get("https://demoqa.com/");
+	public static void main(String[] args) {
+		// Configure WebDriverManager
+		WebDriverManager.chromedriver().setup();
 
-            System.out.println("Page Title: " + driver.getTitle());
-            
-            // Click on Elements
-            WebElement element = driver.findElement(By.xpath(
-                "//div[contains(@class,'category-cards')]//div[contains(.,'Elements')]"));
-            element.click();
-            System.out.println("Current URL: " + driver.getCurrentUrl());
-            
-            // Click on Text Box
-            WebElement textBox = driver.findElement(By.xpath(
-                "//li[span[text()='Text Box']]"));
-            textBox.click();
-            
-            // Execute TextBoxTest
-            TextBoxTest textBoxTest = new TextBoxTest(driver);
-            textBoxTest.performTextBoxTest();
-            System.out.println("Text Box actions completed successfully.");
-            
-            // Click on Check Box
-            CheckBoxTestRunner checkBoxRunner = new CheckBoxTestRunner(driver);
-            checkBoxRunner.performCheckBoxTest();
-            
-         
-            
-            
-            
-        } catch (Exception e) {
-            System.err.println("Error in main test:");
-            e.printStackTrace();
-        } 
-    }
+		// Set Chrome options
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		options.addArguments("--start-maximized");
+
+		// Initialize WebDriver
+		WebDriver driver = WebDriverManager.chromedriver().create();
+		driver.manage().window().maximize();
+
+		try {
+			driver.get("https://demoqa.com/");
+
+			System.out.println("Page Title: " + driver.getTitle());
+
+			// Click on Elements
+			WebElement element = driver
+					.findElement(By.xpath("//div[contains(@class,'category-cards')]//div[contains(.,'Elements')]"));
+			element.click();
+			System.out.println("Current URL: " + driver.getCurrentUrl());
+
+			// Click on Text Box
+			WebElement textBox = driver.findElement(By.xpath("//li[span[text()='Text Box']]"));
+			textBox.click();
+
+			// Execute TextBoxTest
+			TextBoxTest textBoxTest = new TextBoxTest(driver);
+			textBoxTest.performTextBoxTest();
+			System.out.println("Text Box actions completed successfully.");
+
+			// Click on Check Box
+			CheckBoxTestRunner checkBoxRunner = new CheckBoxTestRunner(driver);
+			checkBoxRunner.performCheckBoxTest();
+
+		} catch (Exception e) {
+			System.err.println("Error in main test:");
+			e.printStackTrace();
+		}
+	}
 }
